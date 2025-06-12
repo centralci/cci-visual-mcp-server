@@ -1,5 +1,6 @@
 import { app, BrowserWindow } from 'electron';
 import { TrayMenu } from '@/electron/TrayMenu';
+import path from 'node:path';
 
 import isDev from 'electron-is-dev'
 
@@ -22,11 +23,11 @@ const createWindow = (): void => {
     }
   });
 
-  win.loadURL(
-    isDev
-      ? 'http://localhost:9000'
-      : `file://${app.getAppPath()}/index.html`,
-  )
+  if(isDev) {
+    win.loadFile(path.join(app.getAppPath(), "index.html"))
+  } else {
+    win.loadURL("http://localhost:9000")
+  }
 }
 
 app.on('ready', () => {
