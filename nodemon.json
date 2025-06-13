@@ -1,9 +1,0 @@
-{
-  "watch": [ 
-    "src/main.ts", 
-    "src/preload.ts", 
-    "src/electron/*"
-  ],
-  "exec": "webpack -c webpack.electron.js --mode=development && electron ./dist/main.js",
-  "ext": "ts"
-}
