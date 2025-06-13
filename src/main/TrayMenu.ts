@@ -30,13 +30,16 @@ export class TrayMenu {
         label: 'Open Dashboard',
         type: 'normal',
         click: () => { 
-          appManager.getWindow('MainWindow').window.show();
+          appManager.getWindow('MainWindow').show();
         }
       },
       {
         label: 'Quit',
         type: 'normal',
-        click: () => app.quit()
+        click: () => {
+          appManager.destroyAllWindows()
+          app.quit()
+        }
       }
     ]);
     return contextMenu;

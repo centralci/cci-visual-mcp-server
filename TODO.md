@@ -1,4 +1,3 @@
-- Launch with dynamic port (portfinder-sync?)
 - migrate MCP code from concourse-mcp
 - Auth callback (should be able to use the same server as react does)
 - ~/.concourse-mcp folder with config AND LOGGING files

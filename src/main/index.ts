@@ -18,6 +18,7 @@ app.whenReady().then(() => {
   ipcMain.on('ping', () => console.log('pong'))
 
   appManager.setTray(new TrayMenu());
+  appManager.getWindow("MainWindow") //pre-initialise
 })
 
 app.on('window-all-closed', () => {
