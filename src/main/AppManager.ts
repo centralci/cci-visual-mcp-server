@@ -43,7 +43,7 @@ class AppManager {
   }
 
   destroyAllWindows(): void {
-    for (let win of this.windowMap.values()) {
+    for (const win of this.windowMap.values()) {
       win.destroy()
     }
     this.windowMap.clear()

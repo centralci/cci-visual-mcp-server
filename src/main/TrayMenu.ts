@@ -14,7 +14,7 @@ export class TrayMenu {
     this.tray.setToolTip('Concourse MCP Proxy')
   }
 
-  createNativeImage() {
+  createNativeImage(): Electron.NativeImage {
     // Since we never know where the app is installed,
     // we need to add the app base path to it.
 
