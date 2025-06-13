@@ -1,9 +1,7 @@
 const CopyPlugin = require('copy-webpack-plugin');
 const path = require('path');
 
-module.exports = {
-  // Build Mode
-  mode: 'development',
+const config = {
   // Electron Entrypoint
   entry: './src/main.ts',
   target: 'electron-main',
@@ -24,7 +22,10 @@ module.exports = {
     rules: [{
       test: /\.ts$/,
       include: /src/,
-      use: [{ loader: 'ts-loader' }]
+      exclude: /node_modules/,
+      use: {
+        loader: 'ts-loader'
+      }
     }]
   },
   output: {
@@ -32,3 +33,7 @@ module.exports = {
     filename: 'main.js'
   }
 }
+
+module.exports = [
+  config
+]

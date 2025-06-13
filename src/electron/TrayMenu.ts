@@ -1,4 +1,5 @@
 import { app, Tray, Menu, nativeImage } from 'electron';
+import { appManager } from './AppManager';
 import path from "node:path"
 
 export class TrayMenu {
@@ -31,10 +32,10 @@ export class TrayMenu {
   createMenu(): Menu {
     const contextMenu = Menu.buildFromTemplate([
       {
-        label: 'Concourse MCP',
+        label: 'Open',
         type: 'normal',
         click: () => { 
-          /* Later this will open the Main Window */ 
+          appManager.getWindow('MainWindow').window.show();
         }
       },
       {

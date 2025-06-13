@@ -4,11 +4,10 @@
   "description": "A concourse MCP service for Claude and other AI models, incorporating a small UI for troubleshooting and authentication workflows",
   "license": "ISC",
   "author": "Central CI LLC",
-  "type": "commonjs",
-  "main": "main.js",
+  "main": "./dist/main.js",
   "scripts": {
-    "build": "webpack",
-    "react:dev": "webpack serve --mode=development",
+    "build": "webpack -c webpack.config.js",
+    "react:dev": "webpack serve -c webpack.react.js --mode=development",
     "electron:dev": "nodemon",
     "dev": "concurrently --kill-others \"npm run react:dev\" \"npm run electron:dev\"",
     "start": "npm run build && electron dist/main.js"
@@ -21,12 +20,14 @@
     "@electron-forge/maker-zip": "^7.8.1",
     "@electron-forge/plugin-auto-unpack-natives": "^7.8.1",
     "@electron-forge/plugin-fuses": "^7.8.1",
+    "@electron-forge/plugin-webpack": "^7.8.1",
     "@electron/fuses": "^1.8.0",
     "@tailwindcss/postcss": "^4.1.10",
     "@types/react": "^19.1.8",
     "@types/react-dom": "^19.1.6",
     "concurrently": "^9.1.2",
     "copy-webpack-plugin": "^13.0.0",
+    "cross-env": "^7.0.3",
     "css-loader": "^7.1.2",
     "electron": "^36.4.0",
     "electron-is-dev": "^3.0.1",
@@ -45,6 +46,7 @@
   },
   "dependencies": {
     "electron-squirrel-startup": "^1.0.1",
-    "postcss-loader": "^8.1.1"
+    "postcss-loader": "^8.1.1",
+    "tslog": "^4.9.3"
   }
 }
