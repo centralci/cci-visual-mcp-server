@@ -1,16 +1,12 @@
 import { app, Tray, Menu, nativeImage } from 'electron';
 import { appManager } from './AppManager';
-import path from "node:path"
+import trayIcon from '../../resources/AppTrayTemplate.png?asset'
 
 export class TrayMenu {
   // Create a variable to store our tray
   // Public: Make it accessible outside of the class;
   // Readonly: Value can't be changed
   public readonly tray: Tray;
-
-  // Path where should we fetch our icon;
-  private iconPath: string = '/images/AppTrayTemplate.png';
-
 
   constructor() {
     this.tray = new Tray(this.createNativeImage())
@@ -22,8 +18,7 @@ export class TrayMenu {
     // Since we never know where the app is installed,
     // we need to add the app base path to it.
 
-    const trayIconPath = path.join(app.getAppPath(), this.iconPath)
-    const image = nativeImage.createFromPath(trayIconPath)
+    const image = nativeImage.createFromPath(trayIcon)
     // Marks the image as a template image.
     image.setTemplateImage(true);
     return image;
@@ -32,7 +27,7 @@ export class TrayMenu {
   createMenu(): Menu {
     const contextMenu = Menu.buildFromTemplate([
       {
-        label: 'Open',
+        label: 'Open Dashboard',
         type: 'normal',
         click: () => { 
           appManager.getWindow('MainWindow').window.show();
